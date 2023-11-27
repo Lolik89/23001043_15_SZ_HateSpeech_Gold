@@ -17,7 +17,7 @@ swagger_template = {
         "version": "1.0.0",
         "description": "Dokumentasi API untuk Data Processing dan Modeling"
     },
-    "host": "127.0.0.1:5000"
+    #"host": "127.0.0.1:5000"
 }
 
 swagger_config = {
