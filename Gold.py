@@ -49,32 +49,32 @@ def text_processing():
     response_data = jsonify(json_response)
     return response_data
 
-# @swag_from("docs/text_processing_file.yml", methods=['POST'])
-# @app.route('/text-processing-file', methods=['POST'])
-# def text_processing_file():
+@swag_from("docs/text_processing_file.yml", methods=['POST'])
+@app.route('/text-processing-file', methods=['POST'])
+def text_processing_file():
 
-#     # Upladed file
-#     file = request.files.getlist('file')[0]
+    # Upladed file
+    file = request.files.getlist('file')[0]
 
-#     # Import file csv ke Pandas
-#     df = pd.read_csv(file)
+    # Import file csv ke Pandas
+    df = pd.read_csv(file)
 
-#     # Ambil teks yang akan diproses dalam format list
-#     texts = df.text.to_list()
+    # Ambil teks yang akan diproses dalam format list
+    texts = df.text.to_list()
 
-#     # Lakukan cleansing pada teks
-#     cleaned_text = []
-#     for text in texts:
-#         cleaned_text.append(re.sub(r'[^a-zA-Z0-9]', ' ', text))
+    # Lakukan cleansing pada teks
+    cleaned_text = []
+    for text in texts:
+        cleaned_text.append(re.sub(r'[^a-zA-Z0-9]', ' ', text))
 
-#     json_response = {
-#         'status_code': 200,
-#         'description': "Teks yang sudah diproses",
-#         'data': cleaned_text,
-#     }
+    json_response = {
+        'status_code': 200,
+        'description': "Teks yang sudah diproses",
+        'data': cleaned_text,
+    }
 
-#     response_data = jsonify(json_response)
-#     return response_data
+    response_data = jsonify(json_response)
+    return response_data
 
 if __name__ == '__main__':
         app.run()
