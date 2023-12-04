@@ -36,6 +36,22 @@ swagger = Swagger(app, template=swagger_template, config=swagger_config)
 
 #TEXT PROCESSING
 
+@swag_from('docs/text-clean-by-user.yml', methods=['POST'])
+@app.route('/text-clean-by-user', methods=['POST'])
+def text_clean_by_user():
+
+    inputText = request.form.get('text')
+
+    json_response = {
+        'status_code': 200,
+        'description': 'Original Text',
+        'data': re.sub(r'[^a-zA-Z0-9]', ' ', inputText)
+    }
+
+    response_data = jsonify(json_response)
+
+    return response_data
+
 @swag_from("docs/text_processing.yml", methods=['POST'])
 @app.route('/text-processing', methods=['POST'])
 def text_processing():
